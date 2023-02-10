@@ -1,8 +1,7 @@
 # parameters
-ARG REPO_NAME="<REPO_NAME_HERE>"
-ARG DESCRIPTION="<DESCRIPTION_HERE>"
-ARG MAINTAINER="<YOUR_FULL_NAME> (<YOUR_EMAIL_ADDRESS>)"
-# pick an icon from: https://fontawesome.com/v4.7.0/icons/
+ARG REPO_NAME="<dt-automatic-charging>"
+ARG DESCRIPTION="Base image containing common libraries and environment setup for ROS applications."
+ARG MAINTAINER=" ()"
 ARG ICON="cube"
 
 # ==================================================>
@@ -10,7 +9,7 @@ ARG ICON="cube"
 ARG ARCH=arm64v8
 ARG DISTRO=ente
 ARG BASE_TAG=${DISTRO}-${ARCH}
-ARG BASE_IMAGE=dt-core
+ARG BASE_IMAGE=dt-ros-commons
 ARG LAUNCHER=default
 
 # define base image
@@ -52,8 +51,8 @@ COPY ./dependencies-apt.txt "${REPO_PATH}/"
 RUN dt-apt-install ${REPO_PATH}/dependencies-apt.txt
 
 # install python3 dependencies
-COPY ./dependencies-py3.txt "${REPO_PATH}/"
-RUN dt-pip3-install ${REPO_PATH}/dependencies-py3.txt
+#COPY ./dependencies-py3.txt "${REPO_PATH}/"
+#RUN dt-pip3-install ${REPO_PATH}/dependencies-py3.txt
 
 # copy the source code
 COPY ./packages "${REPO_PATH}/packages"
