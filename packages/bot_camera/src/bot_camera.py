@@ -2,7 +2,6 @@
 
 from typing import Optional, Any
 
-
 import cv2
 
 import rospy
@@ -16,10 +15,7 @@ from turbojpeg import TurboJPEG
 from cv_bridge import CvBridge
 
 
-
-
-
-class TestNode(DTROS):
+class BotCamera(DTROS):
     def __init__(self, node_name):
         super().__init__(node_name, node_type=NodeType.PERCEPTION)
 
@@ -60,6 +56,7 @@ class TestNode(DTROS):
         # publish image
         self.pub_img.publish(out_msg)
 
+
 if __name__ == "__main__":
-    node = TestNode("test_node")
+    node = BotCamera("test_node")
     rospy.spin()
